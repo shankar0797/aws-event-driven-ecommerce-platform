@@ -57,3 +57,40 @@ variable "private_subnet_cidrs" {
     "10.0.12.0/24"
   ]
 }
+variable "ecs_cpu" {
+  description = "CPU units for the ECS Fargate task"
+  type        = number
+  default     = 256
+}
+
+variable "ecs_memory" {
+  description = "Memory in MB for the ECS Fargate task"
+  type        = number
+  default     = 512
+}
+
+variable "ecs_desired_count" {
+  description = "Number of ECS tasks to run"
+  type        = number
+  default     = 2
+}
+
+variable "container_name" {
+  description = "Application container name"
+  type        = string
+  default     = "order-api"
+}
+
+variable "container_port" {
+  description = "Application container port"
+  type        = number
+  default     = 8000
+}
+
+variable "image_tag" {
+  description = "Docker image tag to deploy"
+  type        = string
+  default     = "1.0"
+}
+
+
