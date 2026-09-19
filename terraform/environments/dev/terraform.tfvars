@@ -7,5 +7,5 @@ ecs_memory        = 512
 ecs_desired_count = 2
 container_name    = "order-api"
 container_port    = 8000
-image_tag         = "1.0"
+image_tag         = "1.1"
 

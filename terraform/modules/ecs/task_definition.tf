@@ -21,6 +21,16 @@ resource "aws_ecs_task_definition" "this" {
 
       cpu    = var.cpu
       memory = var.memory
+      environment = [
+        {
+          name  = "SQS_QUEUE_URL"
+          value = var.sqs_queue_url
+        },
+        {
+          name  = "AWS_REGION"
+          value = "ap-south-1"
+        }
+      ]
 
       portMappings = [
         {

@@ -64,6 +64,26 @@ module "ecs" {
   target_group_arn      = module.alb.target_group_arn
 
   log_group_name = "/ecs/${local.name_prefix}-order-api"
+  sqs_queue_arn  = module.sqs.queue_arn
+  sqs_queue_url  = module.sqs.queue_url
+
+  project_name = var.project_name
+  environment  = var.environment
+}
+
+# ---------------------------------------------------------
+# SQS Module
+# ---------------------------------------------------------
+
+module "sqs" {
+  source = "../../modules/sqs"
+
+  queue_name = "${local.name_prefix}-order-queue"
+  dlq_name   = "${local.name_prefix}-order-dlq"
+
+  max_receive_count          = 3
+  visibility_timeout_seconds = 60
+  message_retention_seconds  = 345600
 
   project_name = var.project_name
   environment  = var.environment

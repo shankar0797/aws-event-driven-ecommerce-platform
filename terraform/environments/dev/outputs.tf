@@ -49,3 +49,26 @@ output "alb_target_group_arn" {
   description = "ARN of the ALB target group"
   value       = module.alb.target_group_arn
 }
+# ---------------------------------------------------------
+# SQS Outputs
+# ---------------------------------------------------------
+
+output "sqs_queue_url" {
+  description = "URL of the main order queue"
+  value       = module.sqs.queue_url
+}
+
+output "sqs_queue_arn" {
+  description = "ARN of the main order queue"
+  value       = module.sqs.queue_arn
+}
+
+output "sqs_dlq_url" {
+  description = "URL of the order dead-letter queue"
+  value       = module.sqs.dlq_url
+}
+
+output "sqs_dlq_arn" {
+  description = "ARN of the order dead-letter queue"
+  value       = module.sqs.dlq_arn
+}

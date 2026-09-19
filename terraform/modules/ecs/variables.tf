@@ -67,3 +67,14 @@ variable "environment" {
   description = "Environment name"
   type        = string
 }
+variable "sqs_queue_arn" {
+  description = "ARN of the SQS order queue"
+  type        = string
+}
+
+variable "sqs_queue_url" {
+  description = "URL of the SQS order queue"
+  type        = string
+}
+
+
