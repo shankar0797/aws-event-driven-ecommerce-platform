@@ -101,6 +101,35 @@ module "lambda" {
   memory_size = 256
 
   sqs_queue_arn = module.sqs.queue_arn
+  sns_topic_arn = module.sns.topic_arn
+
+  project_name = var.project_name
+  environment  = var.environment
+}
+
+module "sns" {
+  source = "../../modules/sns"
+
+  topic_name   = "${local.name_prefix}-order-notifications"
+  project_name = var.project_name
+  environment  = var.environment
+}
+
+
+module "notification_lambda" {
+  source = "../../modules/notification_lambda"
+
+  function_name = "${local.name_prefix}-send-notification"
+  source_dir    = "../../../lambda/send_notification"
+
+  runtime     = "python3.11"
+  handler     = "lambda_function.lambda_handler"
+  timeout     = 30
+  memory_size = 256
+
+  sns_topic_arn = module.sns.topic_arn
+
+  ses_from_email = "shivashankar199707@gmail.com"
 
   project_name = var.project_name
   environment  = var.environment

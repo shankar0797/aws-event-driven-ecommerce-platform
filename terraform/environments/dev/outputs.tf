@@ -83,4 +83,21 @@ output "lambda_function_arn" {
   value       = module.lambda.function_arn
 }
 
+output "sns_topic_arn" {
+  description = "SNS order notification topic ARN"
+  value       = module.sns.topic_arn
+
+
+}
+
+output "notification_lambda_function_name" {
+  description = "Notification Lambda function name"
+  value       = module.notification_lambda.function_name
+}
+
+output "notification_lambda_function_arn" {
+  description = "Notification Lambda function ARN"
+  value       = module.notification_lambda.function_arn
+}
+
 

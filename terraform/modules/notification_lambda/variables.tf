@@ -1,10 +1,10 @@
 variable "function_name" {
-  description = "Name of the Lambda function"
+  description = "Notification Lambda function name"
   type        = string
 }
 
 variable "source_dir" {
-  description = "Directory containing Lambda source code"
+  description = "Notification Lambda source directory"
   type        = string
 }
 
@@ -21,15 +21,25 @@ variable "handler" {
 }
 
 variable "timeout" {
-  description = "Lambda timeout in seconds"
+  description = "Lambda timeout"
   type        = number
   default     = 30
 }
 
 variable "memory_size" {
-  description = "Lambda memory size"
+  description = "Lambda memory"
   type        = number
   default     = 256
+}
+
+variable "sns_topic_arn" {
+  description = "SNS topic ARN that invokes this Lambda"
+  type        = string
+}
+
+variable "ses_from_email" {
+  description = "Verified SES sender email address"
+  type        = string
 }
 
 variable "project_name" {
@@ -42,12 +52,3 @@ variable "environment" {
   type        = string
 }
 
-variable "sqs_queue_arn" {
-  description = "ARN of the SQS order queue"
-  type        = string
-
-}
-variable "sns_topic_arn" {
-  description = "SNS topic ARN used for order notifications"
-  type        = string
-}
