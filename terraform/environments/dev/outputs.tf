@@ -72,3 +72,15 @@ output "sqs_dlq_arn" {
   description = "ARN of the order dead-letter queue"
   value       = module.sqs.dlq_arn
 }
+
+output "lambda_function_name" {
+  description = "Order processing Lambda function name"
+  value       = module.lambda.function_name
+}
+
+output "lambda_function_arn" {
+  description = "Order processing Lambda function ARN"
+  value       = module.lambda.function_arn
+}
+
+

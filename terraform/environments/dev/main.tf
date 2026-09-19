@@ -89,4 +89,19 @@ module "sqs" {
   environment  = var.environment
 }
 
+module "lambda" {
+  source = "../../modules/lambda"
 
+  function_name = "${local.name_prefix}-process-order"
+  source_dir    = "../../../lambda/process_order"
+
+  runtime     = "python3.11"
+  handler     = "lambda_function.lambda_handler"
+  timeout     = 30
+  memory_size = 256
+
+  sqs_queue_arn = module.sqs.queue_arn
+
+  project_name = var.project_name
+  environment  = var.environment
+}
