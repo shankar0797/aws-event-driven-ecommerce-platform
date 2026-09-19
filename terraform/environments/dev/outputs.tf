@@ -30,4 +30,22 @@ output "private_subnet_ids" {
   description = "Private subnet IDs"
   value       = module.vpc.private_subnet_ids
 }
+output "alb_dns_name" {
+  description = "DNS name of the Application Load Balancer"
+  value       = module.alb.alb_dns_name
+}
 
+output "alb_security_group_id" {
+  description = "Security group ID of the Application Load Balancer"
+  value       = module.alb.alb_security_group_id
+}
+
+output "ecs_security_group_id" {
+  description = "Security group ID for ECS tasks"
+  value       = module.alb.ecs_security_group_id
+}
+
+output "alb_target_group_arn" {
+  description = "ARN of the ALB target group"
+  value       = module.alb.target_group_arn
+}
