@@ -7,3 +7,5 @@ __pycache__/
 *.tfstate.*
 crash.log
 .DS_Store
+# Terraform-generated Lambda packages
+terraform/modules/lambda/*.zip
