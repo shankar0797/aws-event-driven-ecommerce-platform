@@ -78,3 +78,22 @@ variable "sqs_queue_url" {
 }
 
 
+variable "autoscaling_min_capacity" {
+  description = "Minimum number of ECS tasks for auto scaling"
+  type        = number
+  default     = 2
+}
+
+variable "autoscaling_max_capacity" {
+  description = "Maximum number of ECS tasks for auto scaling"
+  type        = number
+  default     = 4
+}
+
+variable "autoscaling_cpu_target" {
+  description = "Target average CPU utilization percentage"
+  type        = number
+  default     = 60
+}
+
+

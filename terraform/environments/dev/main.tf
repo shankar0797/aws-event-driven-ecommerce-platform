@@ -2,7 +2,6 @@ locals {
   name_prefix = "${var.project_name}-${var.environment}"
 }
 
-
 # ---------------------------------------------------------
 # ECR
 # ---------------------------------------------------------
@@ -134,3 +133,33 @@ module "notification_lambda" {
   project_name = var.project_name
   environment  = var.environment
 }
+# ---------------------------------------------------------
+# CloudWatch Monitoring
+# ---------------------------------------------------------
+
+module "cloudwatch" {
+  source = "../../modules/cloudwatch"
+
+  project_name = var.project_name
+  environment  = var.environment
+
+  ecs_cluster_name = "${local.name_prefix}-cluster"
+  ecs_service_name = "${local.name_prefix}-order-api"
+
+  alb_target_group_arn_suffix = replace(
+    module.alb.target_group_arn,
+    "arn:aws:elasticloadbalancing:${var.aws_region}:${data.aws_caller_identity.current.account_id}:targetgroup/",
+    "targetgroup/"
+  )
+
+  alb_load_balancer_arn_suffix = replace(
+    module.alb.alb_arn,
+    "arn:aws:elasticloadbalancing:${var.aws_region}:${data.aws_caller_identity.current.account_id}:loadbalancer/",
+    ""
+  )
+  sqs_queue_name = "${local.name_prefix}-order-queue"
+}
+
+
+
+
