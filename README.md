@@ -792,3 +792,37 @@ GitHub:
 
 https://github.com/shankar0797
 
+
+## 📸 Project Evidence / Screenshots
+
+The following screenshots provide evidence of the deployed AWS components and end-to-end workflow.
+
+| # | Evidence |
+|---|---|
+| 01 | ECS service running |
+| 02 | ECS running Fargate tasks |
+| 03 | ALB healthy targets |
+| 04 | ECR container images |
+| 05 | SQS order queue |
+| 06 | SQS Dead Letter Queue |
+| 07 | Order-processing Lambda |
+| 08 | SNS order notifications |
+| 09 | Notification Lambda |
+| 10 | SES verified identity |
+| 11 | CloudWatch alarms |
+| 12 | ECS auto scaling |
+| 13 | API health check |
+| 14 | Successful order submission |
+| 15 | Order-processing Lambda logs |
+| 16 | SES email delivery |
+
+### End-to-End Flow
+
+Customer Order → ALB → ECS/Fargate → SQS → Lambda → SNS → Notification Lambda → SES → Customer Email
+
+### CloudFront Status
+
+CloudFront integration is prepared in Terraform but is currently pending AWS account verification. The active application path is:
+
+Internet → ALB → ECS/Fargate
+
