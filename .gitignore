@@ -9,3 +9,7 @@ crash.log
 .DS_Store
 # Terraform-generated Lambda packages
 terraform/modules/lambda/*.zip
+*.tfplan
+*.zip
+crash.log
+.DS_Store
